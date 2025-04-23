@@ -1,0 +1,948 @@
+/* --- ОБЩИЕ СТИЛИ И СБРОС --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* Для плавной прокрутки по якорю */
+}
+
+body {
+  /* ИЗМЕНЕНИЕ: Попробуем шрифт Montserrat, он больше похож на оригинал своей "увесистостью".
+     Если его нет, Lato остается запасным. Увеличим базовый размер немного. */
+  font-family: 'Montserrat', 'Lato', sans-serif;
+  background-color: #f2f2f2; /* Этот фон выглядит похоже на оригинал */
+  color: #333; /* Основной темный цвет текста */
+  line-height: 1.6;
+  /* ДОБАВЛЕНИЕ: Сделаем текст чуть жирнее по умолчанию, ближе к оригиналу */
+  font-weight: 400; /* Или 500, если нужно еще плотнее */
+}
+
+.container {
+  /* ИЗМЕНЕНИЕ: Возможно, стоит немного увеличить max-width, если контент кажется узким */
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0px 15px;
+  text-align: center;
+}
+
+/* --- СТИЛИ ХЕДЕРА (Секция 1) --- */
+.site-header {
+  /* Убираем фон и паддинг отсюда */
+  padding: 0px 0;
+  width: 100%;
+  margin-top: 0;
+}
+.site-header .container {
+   background-color: #333; /* Фон теперь здесь */
+   color: #cccccc;
+   padding: 2px 15px; /* Внутренние отступы для контента внутри серого блока */
+   /* max-width и margin: auto унаследуются от .container */
+   max-width: 1800px;
+   margin: 0 auto;
+   text-align: center;
+}
+
+.logo {
+  /* ИЗМЕНЕНИЕ: Увеличим размер и сделаем еще жирнее, если Montserrat позволяет */
+  font-size: 6em; /* Значительно увеличиваем */
+  font-weight: 700; /* Или 800, если шрифт поддерживает */
+  letter-spacing: 1px;
+  margin-bottom: 5px; /* ИЗМЕНЕНИЕ: Чуть больше отступ снизу */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* ИЗМЕНЕНИЕ: Увеличим расстояние между текстом и иконкой */
+  gap: 15px;
+  color: #cccccc; /* ИЗМЕНЕНИЕ: Устанавливаем цвет явно */
+}
+
+.logo-icon {
+  display: inline-block;
+  /* ИЗМЕНЕНИЕ: Немного увеличим иконку */
+  width: 40px;
+  height: 45px;
+  background-color: #f7c12c; /* ИЗМЕНЕНИЕ: Попробуем чуть более насыщенный желтый */
+  position: relative;
+  margin: 0 8px; /* ИЗМЕНЕНИЕ: Небольшая коррекция отступа */
+  clip-path: polygon(50% 0%, 100% 25%, 100% 100%, 0 100%, 0 25%);
+}
+
+.logo-icon::before,
+.logo-icon::after {
+  content: 'H';
+  position: absolute;
+  color: #333;
+  /* ИЗМЕНЕНИЕ: Подгоняем размер под увеличенную иконку */
+  font-size: 1.8em;
+  font-weight: 900;
+  top: 48%; /* ИЗМЕНЕНИЕ: Точнее центрируем */
+  transform: translateY(-50%);
+}
+.logo-icon::before { left: 16%; } /* ИЗМЕНЕНИЕ: Корректируем позицию */
+.logo-icon::after { right: 16%; } /* ИЗМЕНЕНИЕ: Корректируем позицию */
+
+.tagline {
+  /* ИЗМЕНЕНИЕ: Увеличим размер и жирность */
+  font-size: 1.45em;
+  font-weight: 500; /* Значительно жирнее */
+  margin-top: 1px; /* ИЗМЕНЕНИЕ: Немного увеличим отступ */
+  color: #cccccc; /* ИЗМЕНЕНИЕ: Устанавливаем цвет явно */
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+/* --- СТИЛИ СЕКЦИИ ВСТУПЛЕНИЯ (Секция 1) --- */
+#intro-section {
+  /* ИЗМЕНЕНИЕ: Увеличим отступы для большего пространства */
+  padding: 50px 0 60px 0;
+  background-color: #f2f2f2;
+}
+
+/* Общие стили для желтых "пилюль" */
+.highlight-box {
+  background-color: #eec100; /* ИЗМЕНЕНИЕ: Тот же насыщенный желтый */
+  color: #333;
+  /* ИЗМЕНЕНИЕ: Увеличиваем паддинги, особенно вертикальный */
+  padding: 12px 60px;
+  border-radius: 50px; /* Оставляем, это дает форму пилюли */
+  /* ИЗМЕНЕНИЕ: Делаем текст очень жирным */
+  font-weight: 700; /* Или 900 */
+  display: inline-block;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  /* ИЗМЕНЕНИЕ: Немного увеличим шрифт */
+  font-size: 1.5em;
+  /* ИЗМЕНЕНИЕ: Увеличим отступ под верхним баннером */
+  margin-bottom: 30px;
+}
+.highlight-box:hover {
+  background-color: #f7c12c; /* Оставляем эффект */
+}
+
+/* Специфичный стиль для верхнего баннера, если нужен */
+.guarantee-box {
+  /* Унаследует все от .highlight-box */
+  /* Можно добавить/переопределить что-то здесь при необходимости */
+   margin-top: 0; /* Убираем верхний отступ, если он не нужен */
+}
+
+.intro-text {
+  /* ИЗМЕНЕНИЕ: Увеличим базовый размер текста */
+  font-size: 1.5em;
+  /* ИЗМЕНЕНИЕ: Увеличим отступ */
+  margin-bottom: 20px;
+  max-width: 900px; /* Можно чуть шире */
+  margin-left: auto;
+  margin-right: auto;
+  /* ИЗМЕНЕНИЕ: Сделаем текст черным для контраста, как на оригинале */
+  color: #000;
+  line-height: 1.7;
+}
+.intro-text strong {
+  /* ИЗМЕНЕНИЕ: Если используем Montserrat, возможно, 700 или 800 будет достаточно жирно */
+  font-weight: 700; /* Попробуем чуть меньше, чем 900, для лучшего вида с Montserrat */
+  color: #000; /* Оставляем черным */
+}
+
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Отступ между блоками (маленький) */
+  gap: 7px; /* Оставляем маленький отступ, можно 3px или 4px */
+}
+
+.benefit-item {
+  /* ИЗМЕНЕНИЕ: Делаем фон максимально ярким (белым) */
+  background-color: #e1e1e1; /* Белый фон - самый яркий */
+  /* --- ИЛИ ЕСЛИ ВЫ ХОТЕЛИ ЯРКО-ЖЕЛТЫЙ --- */
+  /* background-color: #f7c12c; */ /* Ярко-желтый, как у кнопок */
+  /* --------------------------------------- */
+  color: #333; /* Цвет текста */
+  /* Внутренние отступы - оставляем компактными по высоте */
+  padding: 12px 25px;
+  border-radius: 50px; /* Форма пилюли */
+  font-size: 1.08em; /* Размер шрифта */
+  /* ИЗМЕНЕНИЕ: Увеличиваем максимальную ширину, чтобы текст лучше помещался */
+  font-weight: bold;
+  max-width: 1500px; /* Было 680px. Позволяет блоку вытягиваться шире */
+  /* Ширина подстраивается под текст, но не шире max-width */
+  width: fit-content;
+  text-align: left;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Отступ для иконки внутри */
+}
+
+/* Стили для иконок внутри .benefit-item, если они будут как текст/эмодзи */
+.benefit-item .icon {
+  /* ДОБАВЛЕНИЕ: Можно настроить размер иконки */
+  font-size: 1.2em; /* Например */
+  /* vertical-align: middle; */ /* Уже есть align-items: center у родителя */
+}
+
+.cta-button {
+  /* Унаследует стили .highlight-box */
+  /* ИЗМЕНЕНИЕ: Возможно, чуть другой размер шрифта или отступы */
+  font-size: 1.2em; /* Оставляем как у .highlight-box */
+  padding: 12px 60px; /* Оставляем как у .highlight-box */
+  margin-top: 0px; /* ИЗМЕНЕНИЕ: Убираем лишний отступ сверху, т.к. есть margin-bottom у .benefits-list */
+  margin-bottom: 0; /* Убираем нижний отступ */
+}
+
+
+/* --- СТИЛИ СЕКЦИИ ПРОДАЖИ (Секция 2) --- */
+#sell-section { /* Используем ID секции */
+  min-height: 110vh; /* Минимальная высота экрана */
+  background-image: url('../img/House.png'); /* !!! ЗАМЕНИТЕ НА ВАШЕ ИЗОБРАЖЕНИЕ !!! */
+  background-color: #2c3e50; /* Пример: темно-сине-серый */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Для оверлея и профилей */
+  padding: 60px 20px; /* Отступы */
+  box-sizing: border-box;
+}
+
+/* Оверлей для затемнения */
+#sell-section .background-overlay { /* Уточняем селектор */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+/* Контейнер для контента формы */
+#sell-section .content-wrapper { /* Уточняем селектор */
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  padding: 30px;
+  /* background-color: rgba(0, 0, 0, 0.1); */
+  /* border-radius: 10px; */
+}
+
+#sell-section .content-wrapper h2 { /* Уточняем селектор */
+  font-size: 2.8em;
+  font-weight: 900;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+#sell-section .content-wrapper p { /* Уточняем селектор */
+  font-size: 1em;
+  line-height: 1.4;
+  margin-bottom: 30px;
+  opacity: 1;
+  color: #ffffff;
+}
+.error-message,
+.form-error-summary {
+    display: none; /* Скрыто по умолчанию */
+    color: #e74c3c; /* Красный цвет для ошибок */
+    text-align: left; /* Выравнивание для мелких сообщений */
+    margin-top: 4px; /* Небольшой отступ сверху */
+    font-size: 0.8em; /* Маленький шрифт для мелких сообщений */
+    width: 100%; /* Занимает ширину родителя */
+}
+
+/* Стиль для общего блока ошибки */
+.form-error-summary {
+    background-color: #e74c3c; /* Красный фон */
+    color: #ffffff; /* Белый текст */
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 15px; /* Отступ под блоком */
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.9em;
+    display: none; /* Скрыто по умолчанию */
+}
+
+/* Стиль для полей ввода с ошибкой */
+/* Добавляем класс .is-invalid через JS */
+input.is-invalid {
+    border: 1px solid #e74c3c !important; /* Красная рамка. !important если нужно переопределить */
+    /* Можно добавить и другие стили, например, легкий красный фон */
+    /* background-color: #fbeae5; */
+}
+
+/* Можно добавить стили для .form-group при ошибке, если нужно */
+.form-group {
+    margin-bottom: 0; /* Убедимся, что у группы нет лишнего отступа */
+}
+#sell-section form {
+    gap: 5px; /* Уменьшим основной gap формы, т.к. отступы будут у сообщений */
+}
+
+/* Форма во второй секции */
+#sell-section form { /* Уточняем селектор */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#sell-section input[type="text"],
+#sell-section input[type="email"],
+#sell-section input[type="tel"] { /* Уточняем селектор */
+  padding: 16px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  background-color: #ffffff;
+  color: #333;
+  box-sizing: border-box; /* Важно для правильного расчета ширины */
+  width: 100%; /* Поля будут занимать ширину content-wrapper */
+}
+
+#sell-section input::placeholder { /* Уточняем селектор */
+  color: #a0a0a0;
+  opacity: 1;
+}
+
+#sell-section button[type="submit"] { /* Уточняем селектор */
+  background-color: #eec100;
+  color: #333;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.9em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 15px;
+}
+
+#sell-section button[type="submit"]:hover { /* Уточняем селектор */
+  background-color: #e0b030;
+}
+
+#sell-section .terms-text { /* Уточняем селектор */
+  font-size: 0.85em;
+  margin-top: 25px;
+  opacity: 0.8;
+}
+
+/* Индикаторы пользователей во второй секции */
+#sell-section .user-profiles-overlay { /* Уточняем селектор */
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#sell-section .user-profiles-overlay .profile { /* Уточняем селектор */
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 5px 8px;
+  border-radius: 15px;
+}
+
+#sell-section .user-profiles-overlay .profile img { /* Уточняем селектор */
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+#sell-section .user-profiles-overlay .profile span { /* Уточняем селектор */
+  color: #fff;
+  font-size: 0.8em;
+  margin-right: 8px;
+}
+
+#sell-section .user-profiles-overlay .profile .status { /* Уточняем селектор */
+  background-color: #e74c3c;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-right: 0;
+}
+
+
+/* --- АДАПТИВНОСТЬ --- */
+@media (max-width: 768px) {
+  /* Шапка */
+  .logo {
+    font-size: 2.5em; /* Уменьшаем лого */
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .logo-icon {
+    width: 40px; /* Уменьшаем иконку */
+    height: 44px;
+  }
+  .logo-icon::before, .logo-icon::after {
+    font-size: 1.5em; /* Уменьшаем буквы */
+    top: 48%;
+  }
+  .logo-icon::before { left: 15%; }
+  .logo-icon::after { right: 15%; }
+
+  .tagline {
+    font-size: 1.2em; /* Уменьшаем подзаголовок */
+    font-weight: 600; /* Оставляем жирным */
+  }
+
+  /* Секция вступления */
+  #intro-section {
+    padding: 40px 0 40px 0; /* Уменьшаем вертикальные отступы */
+  }
+
+  .highlight-box, .cta-button {
+    padding: 14px 30px; /* Уменьшаем паддинги кнопок/баннеров */
+    font-size: 1.1em; /* Уменьшаем шрифт */
+    margin-bottom: 35px; /* Уменьшаем отступ */
+  }
+
+  .intro-text {
+    font-size: 1.1em; /* Уменьшаем основной текст */
+    margin-bottom: 35px; /* Уменьшаем отступ */
+  }
+
+  .benefits-list {
+    gap: 12px; /* Уменьшаем расстояние */
+    margin-bottom: 35px; /* Уменьшаем отступ */
+  }
+
+  .benefit-item {
+    padding: 12px 25px; /* Уменьшаем паддинги */
+    font-size: 0.95em; /* Уменьшаем шрифт */
+    max-width: 90%; /* Растягиваем на ширину */
+    text-align: center; /* Центрируем текст на мобильных */
+    justify-content: center; /* Центрируем контент (иконка+текст) */
+    gap: 8px; /* Уменьшаем отступ иконки */
+  }
+
+  .cta-button {
+    margin-top: 0; /* Убедимся, что нет верхнего отступа */
+  }
+
+  /* !!! НЕ ТРОГАЕМ СТИЛИ ДЛЯ ДРУГИХ СЕКЦИЙ ВНУТРИ ЭТОГО MEDIA QUERY !!! */
+  /* Например, оставляем как было: */
+   #sell-section .content-wrapper h2 { font-size: 2em; }
+   #sell-section .content-wrapper { padding: 20px; }
+   /* ... и т.д. для #testimonials-section, #features-section и т.д., если они были здесь ... */
+    .steps-container {
+        flex-direction: column; /* Шаги друг под другом */
+        align-items: center; /* Центрируем по горизонтали */
+        gap: 50px; /* Увеличиваем вертикальный отступ */
+    }
+    .step-item {
+        max-width: 400px; /* Ограничиваем ширину шага */
+        padding: 0; /* Убираем боковые отступы */
+    }
+    /* Убираем разделительные линии на мобильных */
+    .step-item:not(:last-child)::after {
+        display: none;
+    }
+
+} /* Конец @media (max-width: 768px) */
+
+@media (max-width: 600px) {
+  #sell-section .user-profiles-overlay {
+     display: none; /* Скрываем индикаторы на маленьких экранах */
+  }
+   #sell-section {
+      background-attachment: scroll; /* На мобильных лучше фон скроллить вместе со страницей */
+  }
+}
+/* --- СТИЛИ СЕКЦИИ ТЕСТИМОНИАЛОВ (Секция 3) --- */
+
+#testimonials-section {
+  padding: 80px 0; /* Вертикальные отступы */
+  background-color: #f2f2f2; /* Фон по умолчанию */
+}
+
+/* Контейнер для чата */
+.chat-simulation {
+  max-width: 750px; /* Ограничиваем ширину области чата */
+  margin: 0 auto 60px auto; /* Центрируем и добавляем отступ снизу */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Расстояние между сообщениями */
+}
+
+/* Общие стили для сообщений */
+.message {
+  padding: 18px 25px;
+  border-radius: 25px; /* Скругленные углы */
+  max-width: 75%; /* Сообщения не занимают всю ширину */
+  position: relative; /* Для позиционирования имени отправителя */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Легкая тень */
+}
+
+/* Сообщение клиента */
+.client-message {
+  background-color: #e0e0e0; /* Серый фон */
+  color: #333;
+  border-bottom-left-radius: 5px;
+  /* ИЗМЕНЕНИЕ: Выравнивание самого блока сообщения */
+  align-self: flex-start; /* или margin-right: auto; */
+  margin-right: auto;
+}
+
+/* Сообщение Hastor Homes */
+.hastor-message {
+  background-color: #f0c040; /* Желтый фон (проверьте HEX) */
+  color: #333;
+  border-bottom-right-radius: 5px;
+  /* ИЗМЕНЕНИЕ: Выравнивание самого блока сообщения */
+  align-self: flex-end; /* или margin-left: auto; */
+  margin-left: auto;
+}
+
+.message p {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 0.95em;
+  /* ИЗМЕНЕНИЕ: Убедимся, что текст не жирный */
+  font-weight: 400; /* Нормальный вес */
+}
+
+/* Имя отправителя */
+.message .sender {
+  display: block; /* На новой строке */
+  margin-top: 8px; /* Отступ сверху */
+  font-size: 0.8em;
+  color: #666; /* Серый цвет */
+  font-weight: bold;
+}
+
+/* --- НОВЫЕ СТИЛИ для ИМЕНИ ОТПРАВИТЕЛЯ (под сообщением) --- */
+.sender {
+  font-size: 1em;
+  color: #666; /* Серый цвет */
+  /* ИЗМЕНЕНИЕ: Нормальная или слегка увеличенная жирность */
+  font-weight: 700; /* Или 'bold' / 700, если хотите жирнее */
+  margin-top: 0; /* Маленький отступ от сообщения сверху */
+  margin-bottom: 10px; /* Добавляем отступ под именем до следующего сообщения */
+  max-width: 75%; /* Ограничиваем ширину, как у сообщения */
+  padding: 0 5px; /* Небольшой боковой отступ */
+}
+.client-sender {
+  text-align: left;
+  margin-right: auto; /* Отодвигаем от правого края */
+  /* align-self: flex-start; */ /* Можно использовать, если align-items: stretch у родителя */
+}
+.hastor-sender {
+  text-align: right;
+  margin-left: auto; /* Отодвигаем от левого края */
+  /* align-self: flex-end; */ /* Можно использовать, если align-items: stretch у родителя */
+}
+/* Блок "Triumph" */
+.triumph-box {
+  background-color: #333; /* Темно-серый фон */
+  color: #f2f2f2; /* Светлый текст */
+  padding: 15px 175px;
+  border-radius: 30px; /* Сильно скругленные углы */
+  font-weight: bold;
+  display: inline-block; /* Ширина по контенту */
+  margin: 0 auto 50px auto; /* Центрируем и добавляем отступ снизу */
+  font-size: 1.5em;
+}
+
+/* Блок "Почему мы лучшие" */
+.why-us-block {
+  text-align: center;
+}
+
+.why-us-block h2 {
+  font-size: 2.2em;
+  font-weight: 900;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.why-us-block p {
+  font-size: 1.1em;
+  color: #555;
+  line-height: 1.6;
+}
+
+.why-us-block p strong {
+  font-weight: 900;
+  color: #333; /* Делаем акцент на жирном тексте */
+}
+
+/* Адаптивность для чата */
+@media (max-width: 600px) {
+  .message {
+      max-width: 85%; /* Позволяем сообщениям быть чуть шире */
+      padding: 15px 20px;
+  }
+  .chat-simulation {
+      max-width: 100%; /* На маленьких экранах чат может занимать всю ширину */
+  }
+
+  #testimonials-section {
+      padding: 60px 0; /* Уменьшаем отступы */
+  }
+
+   .triumph-box {
+      font-size: 1em;
+      padding: 12px 30px;
+   }
+
+  .why-us-block h2 {
+      font-size: 1.8em;
+  }
+   .why-us-block p {
+      font-size: 1em;
+  }
+}
+/* --- СТИЛИ СЕКЦИИ ПРЕИМУЩЕСТВ (Секция 4) --- */
+
+#features-section {
+  padding: 80px 0 60px 0; /* Отступы сверху/снизу */
+  background-color: #f2f2f2; /* Фон по умолчанию */
+}
+
+/* Контейнер для сетки - можно сделать шире стандартного */
+.features-container {
+  max-width: 1100px; /* Увеличим максимальную ширину */
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Сетка преимуществ */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Две колонки */
+  gap: 50px 40px; /* Отступы между рядами и колонками */
+  margin-bottom: 80px; /* Отступ под сеткой */
+}
+
+.feature-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Текст и картинка в элементе */
+  gap: 25px; /* Отступ между текстом и картинкой */
+  align-items: center; /* Выравниваем по центру вертикали */
+  background-color: #ffffff; /* Белый фон для каждого блока */
+  padding: 30px; /* Внутренние отступы */
+  border-radius: 10px; /* Небольшое скругление */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Тень */
+}
+
+/* Заставляем второй и четвертый элементы поменять порядок текст/картинка */
+.feature-item:nth-child(even) .feature-text {
+  order: 2; /* Текст идет вторым */
+}
+.feature-item:nth-child(even) .feature-image {
+  order: 1; /* Картинка первой */
+}
+
+/* Стиль для последнего элемента, который занимает всю ширину */
+.feature-item-full-width {
+  grid-column: 1 / -1; /* Растягиваем на все колонки сетки */
+  /* Можно оставить 1fr 1fr или сделать картинку меньше */
+  /* grid-template-columns: 2fr 1fr; */ /* Например, текст шире картинки */
+}
+
+
+.feature-text {
+  text-align: left; /* Текст влево */
+}
+
+.feature-icon {
+  font-size: 1.8em; /* Размер иконки (эмодзи) */
+  margin-right: 8px;
+  display: inline-block; /* Чтобы отступ работал */
+  vertical-align: middle; /* Выровнять с текстом */
+}
+
+.feature-text h3 {
+  font-size: 1.4em;
+  font-weight: 900;
+  margin-bottom: 15px;
+  color: #333;
+  display: flex; /* Для лучшего выравнивания иконки и текста */
+  align-items: center;
+}
+
+.feature-text p {
+  font-size: 0.95em;
+  color: #555;
+  line-height: 1.6;
+}
+
+.feature-text strong {
+  font-weight: 700; /* Стандартный жирный */
+  color: #333;
+}
+
+.feature-image img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Убирает лишний отступ снизу */
+  border-radius: 8px; /* Скруглим углы картинки */
+}
+
+/* Желтый блок призыва */
+.final-cta-bar {
+  background-color: #f0c040;
+  color: #333;
+  padding: 18px 40px;
+  border-radius: 30px;
+  font-weight: bold;
+  display: inline-block; /* Ширина по контенту */
+  margin: 0 auto 50px auto; /* Центрируем и отступ снизу */
+  text-align: center;
+  font-size: 1.2em;
+  /* Нужно обернуть в div с text-align: center или использовать display: block и margin auto */
+  display: block; /* Сделаем блочным для margin auto */
+  width: fit-content; /* Ширина по содержимому */
+}
+
+
+/* Заголовок "How it works?" */
+.how-it-works-title {
+  text-align: center;
+  font-size: 2.5em;
+  font-weight: 900;
+  color: #333;
+  margin-bottom: 30px; /* Отступ для следующей секции (если будет) */
+}
+
+
+/* Адаптивность для секции преимуществ */
+@media (max-width: 992px) {
+  .features-grid {
+      grid-template-columns: 1fr; /* Одна колонка на планшетах */
+      gap: 30px; /* Уменьшаем отступ */
+  }
+  /* Убираем перестановку порядка на одной колонке */
+  .feature-item:nth-child(even) .feature-text,
+  .feature-item:nth-child(even) .feature-image {
+      order: initial; /* Сброс порядка */
+  }
+  .feature-item {
+      grid-template-columns: 1fr; /* Картинка под текстом */
+      text-align: center; /* Центрируем все */
+  }
+   .feature-text {
+      text-align: center; /* Текст по центру */
+  }
+   .feature-text h3 {
+      justify-content: center; /* Центрируем иконку и заголовок */
+  }
+  .feature-image {
+      max-width: 70%; /* Ограничим ширину картинки */
+      margin: 20px auto 0 auto; /* Отступ сверху и центрирование */
+  }
+  .feature-item-full-width .feature-image {
+       max-width: 60%; /* Можно сделать картинку в последнем блоке чуть меньше */
+  }
+}
+
+@media (max-width: 600px) {
+  #features-section {
+      padding: 60px 0 40px 0;
+  }
+  .feature-item {
+      padding: 20px;
+  }
+  .feature-text h3 {
+      font-size: 1.2em;
+  }
+   .feature-text p {
+      font-size: 0.9em;
+  }
+  .final-cta-bar {
+      font-size: 1.1em;
+      padding: 15px 30px;
+      width: 90%; /* На мобильных может растянуться */
+      box-sizing: border-box;
+  }
+  .how-it-works-title {
+      font-size: 2em;
+  }
+}
+/* --- СТИЛИ СЕКЦИИ "КАК ЭТО РАБОТАЕТ" (Секция 5) --- */
+
+#how-it-works-section {
+  padding: 40px 0 80px 0; /* Отступы сверху/снизу */
+  background-color: #f2f2f2; /* Фон по умолчанию */
+}
+
+.steps-container {
+  display: flex; /* Располагаем шаги в ряд */
+  justify-content: space-around; /* Распределяем пространство */
+  gap: 30px; /* Пространство между блоками */
+  max-width: 1000px; /* Ограничим ширину контейнера шагов */
+  margin: 0 auto; /* Центрируем */
+}
+
+.step-item {
+  flex: 1; /* Позволяем элементам расти и занимать равное пространство */
+  text-align: center; /* Центрируем текст внутри шага */
+  padding: 0 20px; /* Боковые отступы внутри шага */
+  position: relative; /* Для позиционирования разделительной линии */
+}
+
+/* Разделительные линии (кроме последнего элемента) */
+.step-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -15px; /* Позиция линии между элементами (половина gap) */
+  height: 80%; /* Высота линии (можно настроить) */
+  width: 1px; /* Толщина линии */
+  background-color: #dcdcdc; /* Цвет линии */
+  transform: translateX(50%); /* Точно центрируем линию */
+}
+
+.step-number-box {
+  width: 60px; /* Ширина квадрата */
+  height: 60px; /* Высота квадрата */
+  border: 2px solid #333; /* Черная рамка */
+  background-color: #e0e0e0; /* Серый фон */
+  color: #333; /* Цвет цифры */
+  font-size: 1.8em; /* Размер цифры */
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 25px auto; /* Центрируем и отступ снизу */
+  border-radius: 4px; /* Небольшое скругление */
+}
+
+.step-item h3 {
+  font-size: 1.3em;
+  font-weight: 900;
+  color: #333;
+  margin-bottom: 15px;
+  display: flex; /* Для выравнивания заголовка и иконки */
+  justify-content: center; /* Центрируем */
+  align-items: center; /* Выравниваем по вертикали */
+  gap: 8px; /* Отступ между текстом и иконкой */
+}
+
+.step-icon {
+  font-size: 1.2em; /* Можно подстроить размер эмодзи */
+  display: inline-block;
+}
+
+.step-item p {
+  font-size: 0.95em;
+  color: #555;
+  line-height: 1.6;
+}
+
+.step-item p strong {
+  font-weight: bold; /* Используем стандартный жирный, так как в .feature-text был 700 */
+  color: #333;
+}
+
+
+/* Адаптивность для шагов */
+@media (max-width: 768px) {
+  .steps-container {
+      flex-direction: column; /* Шаги друг под другом */
+      align-items: center; /* Центрируем по горизонтали */
+      gap: 50px; /* Увеличиваем вертикальный отступ */
+  }
+  .step-item {
+      max-width: 400px; /* Ограничиваем ширину шага */
+      padding: 0; /* Убираем боковые отступы */
+  }
+  /* Убираем разделительные линии на мобильных */
+  .step-item:not(:last-child)::after {
+      display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .step-number-box {
+      width: 50px;
+      height: 50px;
+      font-size: 1.6em;
+  }
+   .step-item h3 {
+      font-size: 1.2em;
+  }
+  .step-item p {
+      font-size: 0.9em;
+  }
+  #how-it-works-section {
+      padding-bottom: 60px; /* Уменьшим нижний отступ */
+  }
+}
+/* --- СТИЛИ ФУТЕРА (Секция 6 - Соцсети) --- */
+
+.social-footer {
+  background-color: #fff; /* Белый фон для футера с иконками */
+  padding: 25px 0; /* Вертикальные отступы */
+  margin-top: 0; /* Убираем возможный верхний отступ у footer */
+  border-top: 1px solid #eee; /* Тонкая линия сверху */
+}
+
+.social-icons {
+  display: flex; /* Иконки в ряд */
+  justify-content: center; /* Центрируем по горизонтали */
+  align-items: center; /* Выравниваем по вертикали */
+  gap: 15px; /* Расстояние между иконками */
+}
+
+.social-icon {
+  display: flex; /* Для центрирования SVG внутри */
+  justify-content: center;
+  align-items: center;
+  width: 44px; /* Размер кнопки */
+  height: 44px; /* Размер кнопки */
+  border-radius: 50%; /* Круглая форма */
+  color: #ffffff; /* Цвет иконки по умолчанию - белый */
+  text-decoration: none; /* Убираем подчеркивание */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Плавные эффекты */
+}
+
+.social-icon svg {
+  width: 20px; /* Размер самой SVG иконки */
+  height: 20px;
+}
+
+/* Цвета для каждой соцсети */
+.social-icon.facebook { background-color: #3b5998; }
+.social-icon.twitter-x { background-color: #000000; } /* Черный для X */
+.social-icon.whatsapp { background-color: #25D366; }
+.social-icon.instagram { background-color: #E4405F; } /* Розовый/Фиолетовый градиент сложно сделать просто цветом, берем основной */
+
+/* Эффект при наведении */
+.social-icon:hover {
+  opacity: 0.85; /* Слегка прозрачнее */
+  transform: translateY(-2px); /* Немного приподнять */
+}
+
+/* Копирайт (если добавите) */
+.copyright {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.85em;
+  color: #aaa;
+}
