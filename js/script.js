@@ -1,5 +1,3 @@
-// Файл: script.js
-
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM полностью загружен и разобран');
 
@@ -90,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     errors[index].style.display = 'block'; // Показываем мелкую ошибку
                 }
             } else if (input) {
-                 console.log(`Поле "${input.id || 'индекс ' + index}" заполнено.`);
+                console.log(`Поле "${input.id || 'индекс ' + index}" заполнено.`);
             }
         });
         console.log('Проверка полей завершена. isFormValid:', isFormValid);
@@ -104,14 +102,34 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         } else {
             // Если форма ВАЛИДНА
-            console.log('Форма ВАЛИДНА! Выполняем действие...');
-            // ЗДЕСЬ ВАШ КОД ДЛЯ ОТПРАВКИ ДАННЫХ НА СЕРВЕР
-            // Например, стандартная отправка формы:
-            // form.submit();
+            console.log('Форма ВАЛИДНА! Отправляем данные на сервер...');
 
-            // Или сообщение об успехе (если не нужна реальная отправка):
-            // alert('Спасибо! Ваша заявка принята.');
-            // form.reset(); // Очистить форму после успешной отправки
+            // Собираем данные формы
+            const formData = new FormData(form);
+            const dataToSend = {};
+            formData.forEach((value, key) => {
+                dataToSend[key] = value;
+            });
+            console.log('Данные для отправки:', dataToSend);
+
+            // Отправляем данные на бекенд с помощью fetch API
+            fetch('/submit_form', { // Укажите URL вашего бекенд-ендпоинта
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dataToSend),
+            })
+            .then(response => response.json()) // Или response.text(), в зависимости от ответа сервера
+            .then(data => {
+                console.log('Ответ от сервера:', data);
+                alert('Спасибо! Ваша заявка принята.'); // Показываем сообщение об успехе
+                form.reset(); // Очищаем форму
+            })
+            .catch(error => {
+                console.error('Ошибка при отправке данных на сервер:', error);
+                alert('Произошла ошибка при отправке данных. Пожалуйста, попробуйте позже.'); // Показываем сообщение об ошибке
+            });
         }
         console.log('--- Обработка submit завершена ---');
 
