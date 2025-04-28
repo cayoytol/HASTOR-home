@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hastor Homes - Sell Your House Fast</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -12,7 +12,7 @@
     <!-- Секция 1: Вступление -->
     <header class="site-header">
         <div class="container">
-            <h1 class="logo">HASTOR <img src="img/logo.png" alt="Hastor logo-image" class="logo-image"> HOMES</h1>
+            <h1 class="logo">HASTOR <img src="/static/img/logo.png" alt="Hastor logo-image" class="logo-icon"> HOMES</h1>
             <p class="tagline">Your Go-To Home Buyers in PA</p>
         </div>
     </header>
@@ -138,23 +138,23 @@
                 <div class="features-grid">
                     <div class="feature-item">
                         <div class="feature-text"><h3><span class="feature-icon">🏆</span> We offer real, honest deals</h3><p>We don't <strong>undervalue homes</strong>, drag out the process, or mislead clients.</p></div>
-                        <div class="feature-image"><img src="images/feature-deals.jpg" alt="Honest deal handshake"></div>
+                        <div class="feature-image"><img src="/static/img/15.png" alt="Honest deal handshake"></div>
                     </div>
                     <div class="feature-item">
                          <div class="feature-text"><h3><span class="feature-icon">⚡</span> We work faster than anyone</h3><p>While most companies take their time, <strong>we get it done fast and right</strong>. No waiting weeks.</p></div>
-                       <div class="feature-image"><img src="images/feature-fast.jpg" alt="Happy couple with sold sign"></div>
+                       <div class="feature-image"><img src="/static/img/27.png" alt="Happy couple with sold sign"></div>
                     </div>
                     <div class="feature-item">
                         <div class="feature-text"><h3><span class="feature-icon">💰</span> We pay more</h3><p>Thanks to our financial capabilities, we offer <strong>the best prices</strong> on the market.</p></div>
-                        <div class="feature-image"><img src="images/feature-pay.jpg" alt="Model house with cash"></div>
+                        <div class="feature-image"><img src="/static/img/19.png" alt="Model house with cash"></div>
                     </div>
                     <div class="feature-item">
                         <div class="feature-text"><h3><span class="feature-icon">❤️</span> We work with any situation</h3><p>Foreclosure, divorce, debts, relocation – <strong>we don’t ask “why”</strong>, we just solve your problem.</p></div>
-                        <div class="feature-image"><img src="images/feature-situation.jpg" alt="Couple discussing plans"></div>
+                        <div class="feature-image"><img src="/static/img/22.png" alt="Couple discussing plans"></div>
                     </div>
                     <div class="feature-item feature-item-full-width">
                         <div class="feature-text"><h3><span class="feature-icon">☑️</span> We care about your financial stability</h3><p>We don’t just buy your home, we <strong>help you rebuild your credit</strong> and turn the page to a new chapter.</p></div>
-                        <div class="feature-image"><img src="images/feature-stability.jpg" alt="Signing documents for financial stability"></div>
+                        <div class="feature-image"><img src="/static/img/20.png" alt="Signing documents for financial stability"></div>
                     </div>
                 </div>
             </div>
@@ -234,7 +234,7 @@
                         Please fill in all required fields
                     </div>
                 
-                    <button type="submit">Sell now</button>
+                    <a href="#sell-section" class="footer-cta-link">Sell now</a>
                 </form>
                 <p class="terms-text">You agree to our Terms and Conditions</p>
             </div>
@@ -262,6 +262,6 @@
             <!-- <p class="copyright">© 2023 Hastor Homes. All rights reserved.</p> -->
         </div>
     </footer>
-<script src="js/script.js"></script>
+<script src="/static/js/script.js"></script>
 </body>
 </html>

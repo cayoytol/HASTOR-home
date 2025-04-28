@@ -7,6 +7,7 @@
 
 html {
   scroll-behavior: smooth; /* Для плавной прокрутки по якорю */
+  
 }
 
 body {
@@ -54,6 +55,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap; /* чтобы переносилось на маленьких экранах */
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box; /* обязательно! */
   /* ИЗМЕНЕНИЕ: Увеличим расстояние между текстом и иконкой */
   gap: 15px;
   color: #cccccc; /* ИЗМЕНЕНИЕ: Устанавливаем цвет явно */
@@ -62,11 +67,11 @@ body {
 .logo-icon {
   display: inline-block;
   /* ИЗМЕНЕНИЕ: Немного увеличим иконку */
-  width: 40px;
-  height: 45px;
-  background-color: #f7c12c; /* ИЗМЕНЕНИЕ: Попробуем чуть более насыщенный желтый */
+  width: 100%;
+  max-width: 210px;
+  height: auto;
   position: relative;
-  margin: 0 8px; /* ИЗМЕНЕНИЕ: Небольшая коррекция отступа */
+  margin: 0 1px; /* ИЗМЕНЕНИЕ: Небольшая коррекция отступа */
   clip-path: polygon(50% 0%, 100% 25%, 100% 100%, 0 100%, 0 25%);
 }
 
@@ -78,7 +83,7 @@ body {
   /* ИЗМЕНЕНИЕ: Подгоняем размер под увеличенную иконку */
   font-size: 1.8em;
   font-weight: 900;
-  top: 48%; /* ИЗМЕНЕНИЕ: Точнее центрируем */
+  top: 28%; /* ИЗМЕНЕНИЕ: Точнее центрируем */
   transform: translateY(-50%);
 }
 .logo-icon::before { left: 16%; } /* ИЗМЕНЕНИЕ: Корректируем позицию */
@@ -341,6 +346,35 @@ input.is-invalid {
   opacity: 0.8;
 }
 
+/* Стиль для ссылки "Sell now" в футере/второй секции */
+.footer-cta-link {
+  /* Копируем стили из #sell-section button[type="submit"] */
+  display: inline-block; /* Или block */
+  background-color: #eec100;
+  color: #333;
+  padding: 11px 20px;
+  border: none;
+  border-radius: 25px; /* Форма пилюли */
+  font-size: 1em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 15px;
+  text-decoration: none; /* Убрать подчеркивание */
+  text-align: center;
+}
+
+.footer-cta-link:hover {
+background-color: #e0b030;
+}
+
+/* Можно добавить отступы снизу для полей в этой секции */
+#promo-section-footer .form-group {
+  margin-bottom: 15px; /* Добавляем отступ, т.к. нет gap от form */
+}
+#promo-section-footer .form-group:last-of-type {
+  margin-bottom: 0; /* Убираем у последнего */
+}
 /* Индикаторы пользователей во второй секции */
 #sell-section .user-profiles-overlay { /* Уточняем селектор */
   position: absolute;
@@ -386,93 +420,7 @@ input.is-invalid {
 }
 
 
-/* --- АДАПТИВНОСТЬ --- */
-@media (max-width: 768px) {
-  /* Шапка */
-  .logo {
-    font-size: 2.5em; /* Уменьшаем лого */
-    gap: 10px;
-    margin-bottom: 8px;
-  }
-  .logo-icon {
-    width: 40px; /* Уменьшаем иконку */
-    height: 44px;
-  }
-  .logo-icon::before, .logo-icon::after {
-    font-size: 1.5em; /* Уменьшаем буквы */
-    top: 48%;
-  }
-  .logo-icon::before { left: 15%; }
-  .logo-icon::after { right: 15%; }
 
-  .tagline {
-    font-size: 1.2em; /* Уменьшаем подзаголовок */
-    font-weight: 600; /* Оставляем жирным */
-  }
-
-  /* Секция вступления */
-  #intro-section {
-    padding: 40px 0 40px 0; /* Уменьшаем вертикальные отступы */
-  }
-
-  .highlight-box, .cta-button {
-    padding: 14px 30px; /* Уменьшаем паддинги кнопок/баннеров */
-    font-size: 1.1em; /* Уменьшаем шрифт */
-    margin-bottom: 35px; /* Уменьшаем отступ */
-  }
-
-  .intro-text {
-    font-size: 1.1em; /* Уменьшаем основной текст */
-    margin-bottom: 35px; /* Уменьшаем отступ */
-  }
-
-  .benefits-list {
-    gap: 12px; /* Уменьшаем расстояние */
-    margin-bottom: 35px; /* Уменьшаем отступ */
-  }
-
-  .benefit-item {
-    padding: 12px 25px; /* Уменьшаем паддинги */
-    font-size: 0.95em; /* Уменьшаем шрифт */
-    max-width: 90%; /* Растягиваем на ширину */
-    text-align: center; /* Центрируем текст на мобильных */
-    justify-content: center; /* Центрируем контент (иконка+текст) */
-    gap: 8px; /* Уменьшаем отступ иконки */
-  }
-
-  .cta-button {
-    margin-top: 0; /* Убедимся, что нет верхнего отступа */
-  }
-
-  /* !!! НЕ ТРОГАЕМ СТИЛИ ДЛЯ ДРУГИХ СЕКЦИЙ ВНУТРИ ЭТОГО MEDIA QUERY !!! */
-  /* Например, оставляем как было: */
-   #sell-section .content-wrapper h2 { font-size: 2em; }
-   #sell-section .content-wrapper { padding: 20px; }
-   /* ... и т.д. для #testimonials-section, #features-section и т.д., если они были здесь ... */
-    .steps-container {
-        flex-direction: column; /* Шаги друг под другом */
-        align-items: center; /* Центрируем по горизонтали */
-        gap: 50px; /* Увеличиваем вертикальный отступ */
-    }
-    .step-item {
-        max-width: 400px; /* Ограничиваем ширину шага */
-        padding: 0; /* Убираем боковые отступы */
-    }
-    /* Убираем разделительные линии на мобильных */
-    .step-item:not(:last-child)::after {
-        display: none;
-    }
-
-} /* Конец @media (max-width: 768px) */
-
-@media (max-width: 600px) {
-  #sell-section .user-profiles-overlay {
-     display: none; /* Скрываем индикаторы на маленьких экранах */
-  }
-   #sell-section {
-      background-attachment: scroll; /* На мобильных лучше фон скроллить вместе со страницей */
-  }
-}
 /* --- СТИЛИ СЕКЦИИ ТЕСТИМОНИАЛОВ (Секция 3) --- */
 
 #testimonials-section {
@@ -523,7 +471,7 @@ input.is-invalid {
   line-height: 1.5;
   font-size: 0.95em;
   /* ИЗМЕНЕНИЕ: Убедимся, что текст не жирный */
-  font-weight: 400; /* Нормальный вес */
+  font-weight: 700; /* Нормальный вес */
 }
 
 /* Имя отправителя */
@@ -591,32 +539,7 @@ input.is-invalid {
   color: #333; /* Делаем акцент на жирном тексте */
 }
 
-/* Адаптивность для чата */
-@media (max-width: 600px) {
-  .message {
-      max-width: 85%; /* Позволяем сообщениям быть чуть шире */
-      padding: 15px 20px;
-  }
-  .chat-simulation {
-      max-width: 100%; /* На маленьких экранах чат может занимать всю ширину */
-  }
 
-  #testimonials-section {
-      padding: 60px 0; /* Уменьшаем отступы */
-  }
-
-   .triumph-box {
-      font-size: 1em;
-      padding: 12px 30px;
-   }
-
-  .why-us-block h2 {
-      font-size: 1.8em;
-  }
-   .why-us-block p {
-      font-size: 1em;
-  }
-}
 /* --- СТИЛИ СЕКЦИИ ПРЕИМУЩЕСТВ (Секция 4) --- */
 
 #features-section {
@@ -646,7 +569,7 @@ input.is-invalid {
   align-items: center; /* Выравниваем по центру вертикали */
   background-color: #ffffff; /* Белый фон для каждого блока */
   padding: 30px; /* Внутренние отступы */
-  border-radius: 10px; /* Небольшое скругление */
+  border-radius: 20px; /* Небольшое скругление */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Тень */
 }
 
@@ -701,8 +624,23 @@ input.is-invalid {
   max-width: 100%;
   height: auto;
   display: block; /* Убирает лишний отступ снизу */
-  border-radius: 8px; /* Скруглим углы картинки */
+  border-radius: 20px; /* Скруглим углы картинки */
 }
+
+
+/* ДОБАВЛЕНО: Стили для треугольника-указателя */
+.feature-image::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  transform: translateY(-50%);
+  z-index: 1; /* Добавим z-index на всякий случай */
+  border-radius: 20px;
+}
+
 
 /* Желтый блок призыва */
 .final-cta-bar {
@@ -711,13 +649,12 @@ input.is-invalid {
   padding: 18px 40px;
   border-radius: 30px;
   font-weight: bold;
-  display: inline-block; /* Ширина по контенту */
-  margin: 0 auto 50px auto; /* Центрируем и отступ снизу */
+  display: inline-block;
+  margin: 0 auto 50px auto;
   text-align: center;
   font-size: 1.2em;
-  /* Нужно обернуть в div с text-align: center или использовать display: block и margin auto */
-  display: block; /* Сделаем блочным для margin auto */
-  width: fit-content; /* Ширина по содержимому */
+  display: block;
+  width: fit-content;
 }
 
 
@@ -727,63 +664,12 @@ input.is-invalid {
   font-size: 2.5em;
   font-weight: 900;
   color: #333;
-  margin-bottom: 30px; /* Отступ для следующей секции (если будет) */
+  margin-bottom: 30px;
 }
 
+/* --- Конец стилей для Секции 4 --- */
 
-/* Адаптивность для секции преимуществ */
-@media (max-width: 992px) {
-  .features-grid {
-      grid-template-columns: 1fr; /* Одна колонка на планшетах */
-      gap: 30px; /* Уменьшаем отступ */
-  }
-  /* Убираем перестановку порядка на одной колонке */
-  .feature-item:nth-child(even) .feature-text,
-  .feature-item:nth-child(even) .feature-image {
-      order: initial; /* Сброс порядка */
-  }
-  .feature-item {
-      grid-template-columns: 1fr; /* Картинка под текстом */
-      text-align: center; /* Центрируем все */
-  }
-   .feature-text {
-      text-align: center; /* Текст по центру */
-  }
-   .feature-text h3 {
-      justify-content: center; /* Центрируем иконку и заголовок */
-  }
-  .feature-image {
-      max-width: 70%; /* Ограничим ширину картинки */
-      margin: 20px auto 0 auto; /* Отступ сверху и центрирование */
-  }
-  .feature-item-full-width .feature-image {
-       max-width: 60%; /* Можно сделать картинку в последнем блоке чуть меньше */
-  }
-}
 
-@media (max-width: 600px) {
-  #features-section {
-      padding: 60px 0 40px 0;
-  }
-  .feature-item {
-      padding: 20px;
-  }
-  .feature-text h3 {
-      font-size: 1.2em;
-  }
-   .feature-text p {
-      font-size: 0.9em;
-  }
-  .final-cta-bar {
-      font-size: 1.1em;
-      padding: 15px 30px;
-      width: 90%; /* На мобильных может растянуться */
-      box-sizing: border-box;
-  }
-  .how-it-works-title {
-      font-size: 2em;
-  }
-}
 /* --- СТИЛИ СЕКЦИИ "КАК ЭТО РАБОТАЕТ" (Секция 5) --- */
 
 #how-it-works-section {
@@ -861,39 +747,7 @@ input.is-invalid {
 }
 
 
-/* Адаптивность для шагов */
-@media (max-width: 768px) {
-  .steps-container {
-      flex-direction: column; /* Шаги друг под другом */
-      align-items: center; /* Центрируем по горизонтали */
-      gap: 50px; /* Увеличиваем вертикальный отступ */
-  }
-  .step-item {
-      max-width: 400px; /* Ограничиваем ширину шага */
-      padding: 0; /* Убираем боковые отступы */
-  }
-  /* Убираем разделительные линии на мобильных */
-  .step-item:not(:last-child)::after {
-      display: none;
-  }
-}
 
-@media (max-width: 600px) {
-  .step-number-box {
-      width: 50px;
-      height: 50px;
-      font-size: 1.6em;
-  }
-   .step-item h3 {
-      font-size: 1.2em;
-  }
-  .step-item p {
-      font-size: 0.9em;
-  }
-  #how-it-works-section {
-      padding-bottom: 60px; /* Уменьшим нижний отступ */
-  }
-}
 /* --- СТИЛИ ФУТЕРА (Секция 6 - Соцсети) --- */
 
 .social-footer {
@@ -945,4 +799,231 @@ input.is-invalid {
   margin-top: 20px;
   font-size: 0.85em;
   color: #aaa;
+}
+
+/* --- АДАПТИВНОСТЬ --- */
+
+/* 1. Большие десктопы/Ноутбуки (1200px и меньше) */
+@media (max-width: 1200px) {
+  /* Небольшие корректировки для экранов чуть меньше очень больших */
+  .container { max-width: 960px; } /* Например, если базовый был шире */
+  .features-container { max-width: 1100px; } /* Оставляем */
+  /* Возможно, чуть уменьшить очень крупные заголовки */
+  .logo { font-size: 5.5em; }
+}
+
+/* 2. Планшеты горизонтально (992px и меньше) */
+@media (max-width: 992px) {
+  .container { max-width: 900px; } /* Еще чуть уже */
+  .logo { font-size: 4.5em; }
+  /* Перестраиваем сетку Преимуществ */
+  .features-grid { grid-template-columns: 1fr; }
+  .feature-item:nth-child(even) .feature-text,
+  .feature-item:nth-child(even) .feature-image { order: initial; }
+  .feature-item { grid-template-columns: 1fr; text-align: center; }
+  .feature-text { text-align: center; }
+  .feature-text h3 { justify-content: center; }
+  .feature-image { max-width: 70%; margin: 20px auto 0 auto; }
+  .feature-item-full-width .feature-image { max-width: 60%; }
+  /* Скрываем треугольники */
+  .feature-image::after { display: none; }
+  /* Можно начать уменьшать шрифты для некоторых секций */
+   #sell-section .content-wrapper h2 { font-size: 2.5em; }
+}
+
+/* 3. Планшеты вертикально (768px и меньше) */
+@media (max-width: 768px) {
+  .container { max-width: 720px; } /* Или оставить 100% */
+  /* Шапка */
+  .logo { font-size: 3.5em; gap: 10px; margin-bottom: 5px; }
+  .logo-icon { width: 165px; height: 155px; }
+  .logo-icon::before, .logo-icon::after { font-size: 1.4em; top: 48%; }
+  .tagline { font-size: 1.2em; font-weight: 500; margin-bottom: 10px;}
+  /* Секция 1 */
+  #intro-section { padding: 40px 0 50px 0; }
+  .highlight-box, .cta-button { font-size: 1.2em; padding: 12px 40px; margin-bottom: 40px;}
+  .intro-text { font-size: 1.2em; margin-bottom: 30px; max-width: 90%; }
+  .benefits-list { margin-bottom: 40px; gap: 10px; }
+  .benefit-item { font-size: 1em; padding: 10px 20px; max-width: 90%; justify-content: center; text-align: center; width: auto; font-weight: bold; }
+  /* Секция 2 */
+  #sell-section { min-height: auto; padding: 40px 15px; background-attachment: scroll; }
+  #sell-section .content-wrapper { padding: 20px; }
+  #sell-section .content-wrapper h2 { font-size: 2.3em; } /* Сделали крупнее */
+  #sell-section .content-wrapper p { font-size: 1em; margin-bottom: 25px; line-height: 1.5;} /* Сделали крупнее */
+  #sell-section input { padding: 14px 15px; }
+  #sell-section button[type="submit"] { font-size: 1em; padding: 14px 15px; }
+  /* Секция 3 */
+  #testimonials-section { padding: 60px 0; }
+  .chat-simulation { max-width: 90%; gap: 12px; }
+  .message { max-width: 80%; padding: 15px 20px; }
+  .message p { font-size: 0.9em; }
+  .sender { font-size: 0.8em; max-width: 80%; margin-bottom: 12px; }
+  .triumph-box { font-size: 1.2em; padding: 12px 40px; margin-bottom: 40px; }
+  .why-us-block h2 { font-size: 1.8em; }
+  .why-us-block p { font-size: 1em; }
+  /* Секция 5 */
+  .steps-container { flex-direction: column; gap: 40px; }
+  .step-item { max-width: 90%; padding: 0; }
+  .step-item:not(:last-child)::after { display: none; }
+}
+
+/* 4. Большие смартфоны (576px и меньше) - Раньше это был 600px */
+@media (max-width: 576px) {
+   /* Шапка */
+  .logo { font-size: 2.8em; gap: 8px; }
+  .logo-icon { width: 125px; height: 115px; }
+  .logo-icon::before, .logo-icon::after { font-size: 1.2em; }
+  .tagline { font-size: 1em; }
+  /* Секция 1 */
+  .highlight-box, .cta-button { font-size: 1em; padding: 12px 25px; width: 90%; box-sizing: border-box; margin-bottom: 30px; }
+  .intro-text { font-size: 1em; }
+  .benefit-item { font-size: 0.9em; padding: 10px 20px; }
+  /* Секция 2 */
+  #sell-section .content-wrapper h2 { font-size: 2em; }
+  #sell-section .content-wrapper p { font-size: 0.9em; }
+  #sell-section input { padding: 12px 15px; font-size: 0.9em; }
+  #sell-section button[type="submit"] { font-size: 0.9em; padding: 12px 15px; }
+  #sell-section .terms-text { font-size: 0.8em; }
+  /* Секция 3 */
+  .message { max-width: 85%; padding: 12px 18px;}
+  .message p { font-size: 0.85em; }
+  .sender { font-size: 0.75em; }
+  .triumph-box { font-size: 1em; padding: 10px 25px; margin-bottom: 30px; width: 90%; box-sizing: border-box;}
+  .why-us-block h2 { font-size: 1.5em; }
+  .why-us-block p { font-size: 0.9em; }
+  /* Секция 4 */
+  #features-section { padding: 50px 0 30px 0; }
+  .features-grid { gap: 25px; margin-bottom: 40px;}
+  .feature-item { padding: 15px; gap: 15px;}
+  .feature-text h3 { font-size: 1.1em; }
+  .feature-text p { font-size: 0.9em; }
+  .feature-image { max-width: 85%; }
+  .final-cta-bar { font-size: 1em; padding: 12px 25px; }
+  .how-it-works-title { font-size: 1.6em; }
+  /* Секция 5 */
+  .step-number-box { width: 45px; height: 45px; font-size: 1.5em; margin-bottom: 15px;}
+  .step-item h3 { font-size: 1.1em; }
+  .step-item p { font-size: 0.85em; }
+  /* Повторная форма */
+  #promo-section-footer .content-wrapper h2 { font-size: 1.8em; }
+  #promo-section-footer .content-wrapper p { font-size: 0.9em; }
+  #promo-section-footer input { padding: 12px 15px; font-size: 0.9em; }
+  #promo-section-footer .footer-cta-link { font-size: 0.9em; padding: 12px 15px; }
+  /* Футер */
+  .social-footer { padding: 15px 0; }
+  .social-icon { width: 40px; height: 40px; }
+  .social-icon svg { width: 18px; height: 18px; }
+
+}
+
+/* 5. Обычные/маленькие смартфоны (480px и меньше) - Здесь исправляем логотип */
+@media (max-width: 480px) {
+  /* === ШАПКА === */
+  .logo {
+      font-size: 2.2em; /* ЕЩЕ УМЕНЬШИЛИ */
+      gap: 5px;
+  }
+  .logo-icon {
+      /* ЕЩЕ УМЕНЬШИЛИ */
+      width: 115px;
+      height: 105px;
+      margin: 0 4px;
+  }
+  .logo-icon::before, .logo-icon::after {
+      font-size: 0.8em; /* ЕЩЕ УМЕНЬШИЛИ */
+  }
+  .tagline {
+      font-size: 0.8em; /* ЕЩЕ УМЕНЬШИЛИ */
+      line-height: 1.2;
+  }
+
+  /* === Секция 1: Интро === */
+  .highlight-box, .cta-button { font-size: 0.8em; padding: 10px 15px; }
+  .intro-text { font-size: 0.85em; line-height: 1.4; }
+  .benefit-item { font-size: 0.8em; padding: 8px 15px; }
+
+  /* === Секция 2: Форма === */
+  #sell-section { padding: 20px 10px; }
+  #sell-section .content-wrapper h2 { font-size: 1.5em; }
+  #sell-section .content-wrapper p { font-size: 0.75em; line-height: 1.3; }
+  #sell-section input { padding: 10px 12px; font-size: 0.8em; }
+  #sell-section button[type="submit"] { font-size: 0.8em; padding: 10px 12px; }
+  #sell-section .terms-text { font-size: 0.65em; margin-top: 12px; }
+
+  /* === Секция 3: Чат, Triumph === */
+  #testimonials-section { padding: 30px 0; }
+  .message p { font-size: 0.75em; }
+  .sender { font-size: 0.65em; }
+  .triumph-box { font-size: 0.9em; padding: 8px 15px; }
+  .why-us-block h2 { font-size: 1.3em; }
+  .why-us-block p { font-size: 0.8em; }
+
+  /* === Секция 4: Преимущества === */
+  #features-section { padding: 30px 0 20px 0; }
+  .feature-text h3 { font-size: 1em; }
+  .feature-text p { font-size: 0.8em; }
+  .final-cta-bar { font-size: 0.85em; padding: 10px 18px; }
+  .how-it-works-title { font-size: 1.4em; }
+
+  /* === Секция 5: Шаги === */
+   #how-it-works-section { padding-bottom: 30px; }
+   .step-number-box { width: 40px; height: 40px; font-size: 1.4em; }
+   .step-item h3 { font-size: 1em; }
+   .step-item p { font-size: 0.8em; }
+
+  /* === Секция с повторной формой === */
+   #promo-section-footer { padding: 20px 10px; }
+   #promo-section-footer .content-wrapper h2 { font-size: 1.5em; }
+   #promo-section-footer .content-wrapper p { font-size: 0.75em; line-height: 1.3; }
+   #promo-section-footer input { padding: 10px 12px; font-size: 0.8em; }
+   #promo-section-footer .footer-cta-link { font-size: 0.8em; padding: 10px 12px; }
+   #promo-section-footer .terms-text { font-size: 0.65em; margin-top: 12px; }
+
+  /* === Футер === */
+   .social-footer { padding: 15px 0; }
+   .social-icon { width: 32px; height: 32px; }
+   .social-icon svg { width: 14px; height: 14px; }
+}
+
+/* 6. Совсем маленькие (360px и меньше) - Мелкие правки, если нужно */
+@media (max-width: 360px) {
+  /* Шапка */
+  .logo { font-size: 2em; gap: 4px; padding: 0 10px; text-align: center;} 
+  .logo-icon {
+    /* --- РАЗМЕР ИКОНКИ ДЛЯ 360px --- */
+   width: 85px;
+   height: 75px;
+   max-width: 100%;
+    /* --- КОНЕЦ ИЗМЕНЕНИЙ --- */
+}
+.logo-icon::before, .logo-icon::after {
+    /* --- РАЗМЕР БУКВ ДЛЯ 360px --- */
+   font-size: 0.8em;
+   /* --- КОНЕЦ ИЗМЕНЕНИЙ --- */
+}
+  .tagline { font-size: 0.75em; }
+  /* Секция 1 */
+  .highlight-box, .cta-button { padding: 8px 12px; font-size: 0.75em; }
+  .intro-text { font-size: 0.8em; }
+  .benefit-item { font-size: 0.75em;}
+  /* Секция 2 */
+  #sell-section .content-wrapper h2 { font-size: 1.4em; }
+  #sell-section .content-wrapper p { font-size: 0.7em; }
+  #sell-section input { font-size: 0.75em; }
+  #sell-section button[type="submit"] { font-size: 0.75em; }
+  /* Секция 3 */
+   .message p { font-size: 0.7em; }
+   .sender { font-size: 0.6em; }
+   .triumph-box { font-size: 0.8em;}
+   .why-us-block h2 { font-size: 1.2em; }
+   .why-us-block p { font-size: 0.75em; }
+   /* Секция 4 */
+   .feature-text h3 { font-size: 0.9em; }
+   .feature-text p { font-size: 0.75em; }
+   .final-cta-bar { font-size: 0.8em; }
+   .how-it-works-title { font-size: 1.3em; }
+   /* Секция 5 */
+   .step-item h3 { font-size: 0.9em; }
+   .step-item p { font-size: 0.75em; }
+  /* ... и т.д. если нужны еще мелкие правки */
 }
