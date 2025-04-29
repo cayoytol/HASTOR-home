@@ -1,29 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM полностью загружен и разобран');
+    console.log('DOM повністю завантажений і розібраний');
 
-    // --- Находим основные элементы ---
+    // --- Находимо основні елементи ---
     const form = document.getElementById('sell-form');
     const summaryError = document.getElementById('form-summary-error');
+    const successMessage = document.createElement('div'); // Создаем элемент для сообщения об успехе
+    successMessage.className = 'form-success-message';
+    successMessage.style.display = 'none'; // Сначала скрываем его
+    form.parentNode.insertBefore(successMessage, form.nextSibling); // Добавляем после формы
 
-    // Проверяем, найдена ли форма
     if (!form) {
-        console.error('КРИТИЧЕСКАЯ ОШИБКА: Форма с id="sell-form" НЕ НАЙДЕНА! Валидация не будет работать.');
-        return; // Прекращаем выполнение, если формы нет
+        console.error('КРИТИЧЕСКАЯ ОШИБКА: Форма з id="sell-form" НЕ ЗНАЙДЕНА! Валідація не буде працювати.');
+        return;
     } else {
-        console.log('Форма найдена:', form);
+        console.log('Форма знайдена:', form);
     }
 
-    // Проверяем, найден ли блок общей ошибки
     if (!summaryError) {
-        console.warn('ВНИМАНИЕ: Блок общей ошибки с id="form-summary-error" не найден.');
+        console.warn('ВНИМАНИЕ: Блок загальної помилки з id="form-summary-error" не знайдено.');
     }
 
-    // --- Находим поля ввода и их элементы ошибок ---
     const fieldsToValidate = [
-        { inputId: 'name', errorId: 'name-error' },
-        { inputId: 'phone', errorId: 'phone-error' },
-        { inputId: 'email', errorId: 'email-error' },
-        { inputId: 'address', errorId: 'address-error' }
+        { inputId: 'name', errorId: 'name-error', required: true },
+        { inputId: 'phone', errorId: 'phone-error', required: true },
+        { inputId: 'email', errorId: 'email-error', required: false },
+        { inputId: 'address', errorId: 'address-error', required: false }
     ];
 
     const inputs = [];
@@ -35,11 +36,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const errorElement = document.getElementById(field.errorId);
 
         if (!inputElement) {
-            console.warn(`ВНИМАНИЕ: Поле ввода с id="${field.inputId}" не найдено!`);
+            console.warn(`ВНИМАНИЕ: Поле введення з id="${field.inputId}" не знайдено!`);
             allElementsFound = false;
         }
         if (!errorElement) {
-            console.warn(`ВНИМАНИЕ: Элемент ошибки с id="${field.errorId}" не найден!`);
+            console.warn(`ВНИМАНИЕ: Елемент помилки з id="${field.errorId}" не знайдено!`);
             allElementsFound = false;
         }
 
@@ -48,112 +49,109 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     if (!allElementsFound) {
-        console.error("ОШИБКА: Не все необходимые элементы полей ввода или сообщений об ошибках найдены. Проверьте ID в HTML.");
-        // Можно добавить return; если нужно остановить скрипт
+        console.error("ОШИБКА: Не всі необхідні елементи полів введення або повідомлень про помилки знайдено. Перевірте ID в HTML.");
     }
 
-    // --- Добавляем слушатель на событие отправки формы ---
-    console.log('Добавляем слушатель события submit к форме...');
+    console.log('Додаємо слухача події submit до форми...');
     form.addEventListener('submit', function(event) {
-        console.log('--- Событие SUBMIT сработало! ---');
-
-        // Предотвращаем стандартную отправку формы (ОБЯЗАТЕЛЬНО!)
+        console.log('--- Подія SUBMIT спрацювала! ---');
         event.preventDefault();
-        console.log('event.preventDefault() вызван.');
+        console.log('event.preventDefault() викликано.');
 
-        let isFormValid = true; // Флаг валидности формы
+        let isFormValid = true;
 
-        // --- Сброс ошибок перед новой проверкой ---
-        console.log('Сбрасываем предыдущие ошибки...');
+        console.log('Скидаємо попередні помилки...');
         if (summaryError) {
-            summaryError.style.display = 'none'; // Скрываем общую ошибку
+            summaryError.style.display = 'none';
+            console.log('Загальна помилка прихована.');
         }
         inputs.forEach((input, index) => {
             if (input) {
-                input.classList.remove('is-invalid'); // Убираем красную рамку
+                input.classList.remove('is-invalid');
+                console.log(`Поле "${input.id || 'індекс ' + index}": червона рамка прибрана.`);
             }
             if (errors[index]) {
-                errors[index].style.display = 'none'; // Скрываем мелкую ошибку
+                errors[index].style.display = 'none';
+                console.log(`Помилка для поля "${inputs[index]?.id || 'індекс ' + index}": прихована.`);
             }
         });
 
-        // --- Проверка каждого поля ---
-        console.log('Начинаем проверку полей...');
-        inputs.forEach((input, index) => {
-            if (input && input.value.trim() === '') {
-                console.log(`Поле "${input.id || 'индекс ' + index}" ПУСТОЕ!`);
-                isFormValid = false; // Форма невалидна
-                input.classList.add('is-invalid'); // Добавляем красную рамку
-                if (errors[index]) {
-                    errors[index].style.display = 'block'; // Показываем мелкую ошибку
+        console.log('Починаємо перевірку полів...');
+        fieldsToValidate.forEach((field, index) => {
+            const input = inputs[index];
+            const error = errors[index];
+
+            if (input && field.required && input.value.trim() === '') {
+                console.log(`Поле "${input.id || 'індекс ' + index}" ПУСТЕ!`);
+                isFormValid = false;
+                input.classList.add('is-invalid');
+                console.log(`Поле "${input.id || 'індекс ' + index}": додано червону рамку.`);
+                if (error) {
+                    error.style.display = 'block';
+                    console.log(`Помилка для поля "${input.id || 'індекс ' + index}": показана.`);
                 }
             } else if (input) {
-                console.log(`Поле "${input.id || 'индекс ' + index}" заполнено.`);
+                console.log(`Поле "${input.id || 'індекс ' + index}" заповнено.`);
             }
         });
-        console.log('Проверка полей завершена. isFormValid:', isFormValid);
+        console.log('Перевірка полів завершена. isFormValid:', isFormValid);
 
-        // --- Обработка результата валидации ---
         if (!isFormValid) {
-            // Если форма НЕ валидна
-            console.log('Форма НЕ валидна, показываем общую ошибку.');
+            console.log('Форма НЕ валідна, показуємо загальну помилку.');
             if (summaryError) {
-                summaryError.style.display = 'block'; // Показываем общий блок ошибки
+                summaryError.style.display = 'block';
+                console.log('Загальна помилка показана.');
             }
         } else {
-            // Если форма ВАЛИДНА
-            console.log('Форма ВАЛИДНА! Отправляем данные на сервер...');
+            console.log('Форма ВАЛІДНА! Відправляємо дані на сервер...');
 
-            // Собираем данные формы
             const formData = new FormData(form);
             const dataToSend = {};
             formData.forEach((value, key) => {
                 dataToSend[key] = value;
             });
-            console.log('Данные для отправки:', dataToSend);
+            console.log('Дані для відправки:', dataToSend);
 
-            // Отправляем данные на бекенд с помощью fetch API
-            fetch('/submit_form', { // Укажите URL вашего бекенд-ендпоинта
+            console.log('Відправляємо POST-запит на /submit_form...');
+            fetch('/submit_form', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(dataToSend),
             })
-            .then(response => response.json()) // Или response.text(), в зависимости от ответа сервера
+            .then(response => {
+                console.log('Відповідь від сервера отримана:', response);
+                return response.json();
+            })
             .then(data => {
-                console.log('Ответ от сервера:', data);
-                alert('Спасибо! Ваша заявка принята.'); // Показываем сообщение об успехе
+                console.log('Дані від сервера оброблені:', data);
+                successMessage.textContent = 'Дякуємо! Вашу заявку прийнято.';
+                successMessage.style.display = 'block'; // Показываем сообщение об успехе
                 form.reset(); // Очищаем форму
+                console.log('Форма очищена.');
             })
             .catch(error => {
-                console.error('Ошибка при отправке данных на сервер:', error);
-                alert('Произошла ошибка при отправке данных. Пожалуйста, попробуйте позже.'); // Показываем сообщение об ошибке
+                console.error('Помилка при відправці даних на сервер:', error);
+                alert('Виникла помилка при відправці даних. Будь ласка, спробуйте пізніше.');
             });
         }
-        console.log('--- Обработка submit завершена ---');
+        console.log('--- Обробка submit завершена ---');
 
-    }); // Конец form.addEventListener('submit', ... )
-    console.log('Слушатель submit добавлен.');
+    });
 
-
-    // --- Опционально: убирать ошибку при начале ввода в поле ---
     inputs.forEach((input, index) => {
         if (input) {
             input.addEventListener('input', () => {
-                // Проверяем, что элемент ошибки существует перед тем как с ним работать
                 if (input.value.trim() !== '' && errors[index]) {
                     input.classList.remove('is-invalid');
                     errors[index].style.display = 'none';
-
-                    // Логика скрытия общей ошибки (можно усложнить)
-                    // if (summaryError) {
-                    //     summaryError.style.display = 'none';
-                    // }
+                    console.log(`Поле "${input.id || 'індекс ' + index}": помилка прихована після введення.`);
                 }
             });
+            console.log(`Слухача input додано до поля "${input.id || 'індекс ' + index}".`);
         }
     });
-    console.log('Слушатели input добавлены.');
+    console.log('Слухачі input додані до всіх полів.');
 
-}); // Конец document.addEventListener('DOMContentLoaded', ... )
+});
