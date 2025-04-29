@@ -816,6 +816,7 @@ background-color: #e0b030;
 @media (max-width: 992px) {
   .container { max-width: 900px; } /* Еще чуть уже */
   .logo { font-size: 4.5em; }
+  .logo-icon { width: 147px; height: 137px; }
   /* Перестраиваем сетку Преимуществ */
   .features-grid { grid-template-columns: 1fr; }
   .feature-item:nth-child(even) .feature-text,
@@ -835,9 +836,9 @@ background-color: #e0b030;
 @media (max-width: 768px) {
   .container { max-width: 720px; } /* Или оставить 100% */
   /* Шапка */
-  .logo { font-size: 3.5em; gap: 10px; margin-bottom: 5px; }
-  .logo-icon { width: 165px; height: 155px; }
-  .logo-icon::before, .logo-icon::after { font-size: 1.4em; top: 48%; }
+  .logo { font-size: 3em; gap: 9px; }
+  .logo-icon { width: 125px; height: 115px; }
+  .logo-icon::before, .logo-icon::after { font-size: 1.2em; top: 48%; }
   .tagline { font-size: 1.2em; font-weight: 500; margin-bottom: 10px;}
   /* Секция 1 */
   #intro-section { padding: 40px 0 50px 0; }
