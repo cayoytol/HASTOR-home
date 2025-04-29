@@ -800,6 +800,35 @@ background-color: #e0b030;
   font-size: 0.85em;
   color: #aaa;
 }
+/* --- СТИЛИ ДЛЯ КНОПКИ ЗВОНКА НА МОБИЛЬНЫХ --- */
+.mobile-call-button {
+  display: none; /* По умолчанию СКРЫТА */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #eec100; /* Используем твой желтый цвет */
+  color: #333;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%; /* Круглая */
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Используем flex для центрирования иконки/эмодзи */
+  justify-content: center;
+  align-items: center;
+  font-size: 24px; /* Размер эмодзи */
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.mobile-call-button:hover,
+.mobile-call-button:focus {
+  background-color: #e0b030; /* Цвет ховера */
+  transform: scale(1.05);
+  color: #333;
+}
+/* --- Конец стилей для кнопки --- */
 
 /* --- АДАПТИВНОСТЬ --- */
 
@@ -866,14 +895,16 @@ background-color: #e0b030;
   .steps-container { flex-direction: column; gap: 40px; }
   .step-item { max-width: 90%; padding: 0; }
   .step-item:not(:last-child)::after { display: none; }
+  .mobile-call-button {
+    display: flex; /* Используем flex, так как задали его в базовых стилях для центрирования */
 }
 
 /* 4. Большие смартфоны (576px и меньше) - Раньше это был 600px */
 @media (max-width: 576px) {
    /* Шапка */
-  .logo { font-size: 2.8em; gap: 8px; }
-  .logo-icon { width: 125px; height: 115px; }
-  .logo-icon::before, .logo-icon::after { font-size: 1.2em; }
+  .logo { font-size: 2.3em; gap: 6px; }
+  .logo-icon { width: 115px; height: 105px; }
+  .logo-icon::before, .logo-icon::after { font-size: 0.9em; }
   .tagline { font-size: 1em; }
   /* Секция 1 */
   .highlight-box, .cta-button { font-size: 1em; padding: 12px 25px; width: 90%; box-sizing: border-box; margin-bottom: 30px; }
@@ -921,13 +952,13 @@ background-color: #e0b030;
 @media (max-width: 480px) {
   /* === ШАПКА === */
   .logo {
-      font-size: 2.2em; /* ЕЩЕ УМЕНЬШИЛИ */
+      font-size: 2em; /* ЕЩЕ УМЕНЬШИЛИ */
       gap: 5px;
   }
   .logo-icon {
       /* ЕЩЕ УМЕНЬШИЛИ */
-      width: 115px;
-      height: 105px;
+      width: 95px;
+      height: 85px;
       margin: 0 4px;
   }
   .logo-icon::before, .logo-icon::after {
@@ -989,11 +1020,11 @@ background-color: #e0b030;
 /* 6. Совсем маленькие (360px и меньше) - Мелкие правки, если нужно */
 @media (max-width: 360px) {
   /* Шапка */
-  .logo { font-size: 2em; gap: 4px; padding: 0 10px; text-align: center;} 
+  .logo { font-size: 1.6em; gap: 2px; padding: 0 10px; text-align: center;} 
   .logo-icon {
     /* --- РАЗМЕР ИКОНКИ ДЛЯ 360px --- */
-   width: 85px;
-   height: 75px;
+   width: 65px;
+   height: 55px;
    max-width: 100%;
     /* --- КОНЕЦ ИЗМЕНЕНИЙ --- */
 }
@@ -1027,4 +1058,5 @@ background-color: #e0b030;
    .step-item h3 { font-size: 0.9em; }
    .step-item p { font-size: 0.75em; }
   /* ... и т.д. если нужны еще мелкие правки */
+}
 }

@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const fieldsToValidate = [
         { inputId: 'name', errorId: 'name-error', required: true },
         { inputId: 'phone', errorId: 'phone-error', required: true },
-        { inputId: 'email', errorId: 'email-error', required: false },
-        { inputId: 'address', errorId: 'address-error', required: false }
+        { inputId: 'email', errorId: 'email-error', required: true },
+        { inputId: 'address', errorId: 'address-error', required: true }
     ];
 
     const inputs = [];
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(data => {
                 console.log('Дані від сервера оброблені:', data);
-                successMessage.textContent = 'Дякуємо! Вашу заявку прийнято.';
+                successMessage.textContent = 'Thank you, your application has been accepted.';
                 successMessage.style.display = 'block'; // Показываем сообщение об успехе
                 form.reset(); // Очищаем форму
                 console.log('Форма очищена.');
