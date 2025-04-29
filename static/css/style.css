@@ -838,14 +838,14 @@ background-color: #e0b030;
   .container { max-width: 960px; } /* Например, если базовый был шире */
   .features-container { max-width: 1100px; } /* Оставляем */
   /* Возможно, чуть уменьшить очень крупные заголовки */
-  .logo { font-size: 5.5em; }
+  .logo { font-size: 5em; }
 }
 
 /* 2. Планшеты горизонтально (992px и меньше) */
 @media (max-width: 992px) {
   .container { max-width: 900px; } /* Еще чуть уже */
-  .logo { font-size: 4.5em; }
-  .logo-icon { width: 147px; height: 137px; }
+  .logo { font-size: 3em; }
+  .logo-icon { width: 135px; height: 125px; }
   /* Перестраиваем сетку Преимуществ */
   .features-grid { grid-template-columns: 1fr; }
   .feature-item:nth-child(even) .feature-text,
@@ -866,7 +866,7 @@ background-color: #e0b030;
   .container { max-width: 720px; } /* Или оставить 100% */
   /* Шапка */
   .logo { font-size: 3em; gap: 9px; }
-  .logo-icon { width: 125px; height: 115px; }
+  .logo-icon { width: 115px; height: 110px; }
   .logo-icon::before, .logo-icon::after { font-size: 1.2em; top: 48%; }
   .tagline { font-size: 1.2em; font-weight: 500; margin-bottom: 10px;}
   /* Секция 1 */
@@ -903,7 +903,7 @@ background-color: #e0b030;
 @media (max-width: 576px) {
    /* Шапка */
   .logo { font-size: 2.3em; gap: 6px; }
-  .logo-icon { width: 115px; height: 105px; }
+  .logo-icon { width: 105px; height: 95px; }
   .logo-icon::before, .logo-icon::after { font-size: 0.9em; }
   .tagline { font-size: 1em; }
   /* Секция 1 */
@@ -952,17 +952,17 @@ background-color: #e0b030;
 @media (max-width: 480px) {
   /* === ШАПКА === */
   .logo {
-      font-size: 2em; /* ЕЩЕ УМЕНЬШИЛИ */
+      font-size: 1.6em; /* ЕЩЕ УМЕНЬШИЛИ */
       gap: 5px;
   }
   .logo-icon {
       /* ЕЩЕ УМЕНЬШИЛИ */
-      width: 95px;
-      height: 85px;
+      width: 70px;
+      height: 60px;
       margin: 0 4px;
   }
   .logo-icon::before, .logo-icon::after {
-      font-size: 0.8em; /* ЕЩЕ УМЕНЬШИЛИ */
+      font-size: 0.6em; /* ЕЩЕ УМЕНЬШИЛИ */
   }
   .tagline {
       font-size: 0.8em; /* ЕЩЕ УМЕНЬШИЛИ */
