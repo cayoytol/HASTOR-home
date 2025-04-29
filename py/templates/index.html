@@ -9,7 +9,6 @@
 </head>
 <body>
 
-    <!-- Секция 1: Вступление -->
     <header class="site-header">
         <div class="container">
             <h1 class="logo">HASTOR <img src="/static/img/logo.png" alt="Hastor logo-image" class="logo-icon"> HOMES</h1>
@@ -40,7 +39,6 @@
             </div>
         </section>
 
-        <!-- Секция 2: Форма продажи (Первый раз) -->
         <section id="sell-section" class="hero-section">
             <div class="background-overlay"></div>
             </div>
@@ -52,70 +50,57 @@
                     a few days with minimal hassle and waiting. We guarantee a fast and secure
                     process with as little effort on your part as possible.
                 </p>
-                <form id="sell-form" novalidate> <!-- Даем ID форме -->
-
-                    <!-- Поле Name -->
-                    <div class="form-group"> <!-- Оборачиваем для удобства -->
+                <form id="sell-form" novalidate>
+                    <div class="form-group">
                         <input type="text" id="name" name="name" placeholder="Name" required>
                         <span class="error-message" id="name-error">Required field</span>
                     </div>
-                
-                    <!-- Поле Phone -->
+
                     <div class="form-group">
                         <input type="tel" id="phone" name="phone" placeholder="Phone" required>
                         <span class="error-message" id="phone-error">Required field</span>
                     </div>
-                
-                    <!-- Поле Email -->
+
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Email" required>
-                        <span class="error-message" id="email-error">Required field</span>
+                        <input type="email" id="email" name="email" placeholder="Email">
+                        <span class="error-message" id="email-error"></span>
                     </div>
-                
-                    <!-- Поле Address -->
+
                     <div class="form-group">
-                        <input type="text" id="address" name="address" placeholder="Address, ZIP code" required>
-                        <span class="error-message" id="address-error">Required field</span>
+                        <input type="text" id="address" name="address" placeholder="Address, ZIP code">
+                        <span class="error-message" id="address-error"></span>
                     </div>
-                
-                    <!-- Общий блок ошибки -->
+
                     <div class="form-error-summary" id="form-summary-error">
                         Please fill in all required fields
                     </div>
-                
+
                     <button type="submit">Sell now</button>
                 </form>
                 <p class="terms-text">You agree to our Terms and Conditions</p>
             </div>
-            
         </section>
 
-        <!-- Секция 3: Диалог и Почему мы лучшие -->
         <section id="testimonials-section" class="content-section">
             <div class="container">
                 <div class="chat-simulation">
                     <div class="message client-message">
                         <p>Hello! I'm facing foreclosure and need to sell my house urgently. I only have 7 days. Can you help?</p>
                     </div>
-                    <!-- Отправитель под сообщением -->
                     <div class="sender client-sender">Client</div>
-                    
-                    <!-- Сообщение Hastor -->
+
                     <div class="message hastor-message">
                         <p>Hello! We work with clients in all situations, including foreclosure, bankruptcy, divorce, or urgent relocation. We buy homes as-is (AS-IS)—whether they need repairs, have outstanding debts, or other complications. We offer the best price on the market and guarantee closing the deal in just 5 days. Let’s discuss the details!</p>
                     </div>
-                    <!-- Отправитель под сообщением -->
                     <div class="sender hastor-sender">HASTOR HOMES</div>
-                    
-                    <!-- Следующее сообщение клиента -->
+
                     <div class="message client-message">
                         <p>Great, that works for me! Let’s move forward with the deal.</p>
                     </div>
                     <div class="sender client-sender">Client</div>
-                    
-                    <!-- Следующее сообщение Hastor -->
+
                     <div class="message hastor-message">
-                         <p>Awesome! Deal closed. Welcome to the Hastor Homes family!</p>
+                            <p>Awesome! Deal closed. Welcome to the Hastor Homes family!</p>
                     </div>
                     <div class="sender hastor-sender">HASTOR HOMES</div>
                 </div>
@@ -132,7 +117,6 @@
             </div>
         </section>
 
-        <!-- Секция 4: Преимущества в виде сетки -->
         <section id="features-section" class="content-section">
             <div class="container features-container">
                 <div class="features-grid">
@@ -141,8 +125,8 @@
                         <div class="feature-image"><img src="/static/img/15.png" alt="Honest deal handshake"></div>
                     </div>
                     <div class="feature-item">
-                         <div class="feature-text"><h3><span class="feature-icon">⚡</span> We work faster than anyone</h3><p>While most companies take their time, <strong>we get it done fast and right</strong>. No waiting weeks.</p></div>
-                       <div class="feature-image"><img src="/static/img/27.png" alt="Happy couple with sold sign"></div>
+                            <div class="feature-text"><h3><span class="feature-icon">⚡</span> We work faster than anyone</h3><p>While most companies take their time, <strong>we get it done fast and right</strong>. No waiting weeks.</p></div>
+                        <div class="feature-image"><img src="/static/img/27.png" alt="Happy couple with sold sign"></div>
                     </div>
                     <div class="feature-item">
                         <div class="feature-text"><h3><span class="feature-icon">💰</span> We pay more</h3><p>Thanks to our financial capabilities, we offer <strong>the best prices</strong> on the market.</p></div>
@@ -166,8 +150,7 @@
             </h2>
         </section>
 
-         <!-- Секция 5: Как это работает -->
-        <section id="how-it-works-section">
+         <section id="how-it-works-section">
             <div class="container">
                 <div class="steps-container">
                     <div class="step-item">
@@ -176,12 +159,12 @@
                         <p>Provide basic details about your home, and we'll contact you to discuss the next steps.</p>
                     </div>
                     <div class="step-item">
-                         <div class="step-number-box">2</div>
+                            <div class="step-number-box">2</div>
                         <h3>2. We make you an offer <span class="step-icon">📞</span></h3>
                         <p>Our specialists will reach out with a fair price and answer any questions you may have.</p>
                     </div>
                     <div class="step-item">
-                         <div class="step-number-box">3</div>
+                            <div class="step-number-box">3</div>
                         <h3>3. Get your cash <span class="step-icon">💵</span></h3>
                         <p>We close the deal in 5 days, and you get your payment <strong>in cash</strong>.</p>
                     </div>
@@ -189,8 +172,6 @@
             </div>
         </section>
 
-        <!-- Секция: Повтор формы продажи (Второй раз - перед футером) -->
-        <!-- Обрати внимание: ID здесь такой же, как у секции 2 -->
         <section id="sell-section" class="hero-section">
             <div class="background-overlay"></div>
             </div>
@@ -202,64 +183,49 @@
                     a few days with minimal hassle and waiting. We guarantee a fast and secure
                     process with as little effort on your part as possible.
                 </p>
-                <!-- Можно поменять атрибуты name у полей, если эти формы должны отправлять разные данные -->
-                <form id="sell-form" novalidate> <!-- Даем ID форме -->
-
-                    <!-- Поле Name -->
-                    <div class="form-group"> <!-- Оборачиваем для удобства -->
+                <form id="sell-form" novalidate>
+                    <div class="form-group">
                         <input type="text" id="name" name="name" placeholder="Name" required>
-                        <span class="error-message" id="name-error">Required fieldО</span>
+                        <span class="error-message" id="name-error">Required field</span>
                     </div>
-                
-                    <!-- Поле Phone -->
+
                     <div class="form-group">
                         <input type="tel" id="phone" name="phone" placeholder="Phone" required>
                         <span class="error-message" id="phone-error">Required field</span>
                     </div>
-                
-                    <!-- Поле Email -->
+
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Email" required>
-                        <span class="error-message" id="email-error">Required field</span>
+                        <input type="email" id="email" name="email" placeholder="Email">
+                        <span class="error-message" id="email-error"></span>
                     </div>
-                
-                    <!-- Поле Address -->
+
                     <div class="form-group">
-                        <input type="text" id="address" name="address" placeholder="Address, ZIP code" required>
-                        <span class="error-message" id="address-error">Required field</span>
+                        <input type="text" id="address" name="address" placeholder="Address, ZIP code">
+                        <span class="error-message" id="address-error"></span>
                     </div>
-                
-                    <!-- Общий блок ошибки -->
+
                     <div class="form-error-summary" id="form-summary-error">
                         Please fill in all required fields
                     </div>
-                
+
                     <a href="#sell-section" class="footer-cta-link">Sell now</a>
                 </form>
                 <p class="terms-text">You agree to our Terms and Conditions</p>
             </div>
         </section>
 
-    </main> <!-- Закрыли основной контент -->
+    </main>
 
-    <!-- Футер с иконками соцсетей -->
     <footer class="site-footer social-footer">
         <div class="container">
             <div class="social-icons">
                 <a href="#" target="_blank" class="social-icon facebook" aria-label="Facebook">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.12.479 1.065 2.876 1.213 3.074c.1498 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                 </a>
-                <a href="#" target="_blank" class="social-icon twitter-x" aria-label="Twitter X">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="currentColor"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/></svg>
-                </a>
-                <a href="#" target="_blank" class="social-icon whatsapp" aria-label="WhatsApp">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                </a>
-                 <a href="#" target="_blank" class="social-icon instagram" aria-label="Instagram">
+                <a href="#" target="_blank" class="social-icon instagram" aria-label="Instagram">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                 </a>
+                </a>
             </div>
-            <!-- <p class="copyright">© 2023 Hastor Homes. All rights reserved.</p> -->
         </div>
     </footer>
 <script src="/static/js/script.js"></script>
