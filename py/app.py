@@ -3,14 +3,15 @@ import logging
 import json
 import os
 
-# Налаштування логування
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# --- Налаштування логування ---
+# Змінено рівень логування на WARNING для продакшн (за потреби змініть на INFO або DEBUG)
+logging.basicConfig(level=logging.WARNING, format='%(asctime)s - %(levelname)s - %(module)s - %(message)s')
 
 app = Flask(__name__,
             template_folder=os.path.join(os.path.dirname(__file__), 'templates'),
             static_folder=os.path.join(os.path.dirname(__file__), '..', 'static'))
 
-# Додай секретний ключ для роботи з сесіями
+# --- Додай секретний ключ для роботи з сесіями (зроблено раніше) ---
 app.secret_key = 'a3b4c5d6e7f8g9h0i1j2k3l4m5n6o7p8q9r0s1t2u3v4w5x6y7z8'
 
 # --- Маршрути Flask ---
@@ -53,5 +54,5 @@ def all_submissions():
         return render_template('message.html', message='Історія заповнених анкет відсутня.'), 200
 
 if __name__ == '__main__':
-    logging.info("Запуск Flask-додатку")
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    logging.info("Запуск Flask-додатку в режимі розробки (НЕ ДЛЯ ПРОДАКШН!)")
+    app.run(host='0.0.0.0', port=5000, debug=True) # УВАГА: debug=True не для продакшн
